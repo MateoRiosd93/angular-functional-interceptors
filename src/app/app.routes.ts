@@ -12,6 +12,11 @@ export const routes: Routes = [
             .then(routesModule => routesModule.default)
     },
     {
+        path: 'products',
+        loadChildren: () => import('./features/products/products.routes')
+            .then(routerModule => routerModule.default)
+    },
+    {
         path: '**',
         redirectTo: ''
     }

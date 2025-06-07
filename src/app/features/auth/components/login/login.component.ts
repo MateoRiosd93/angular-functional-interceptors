@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms'
-import { AuthService } from '../../services/auth.service';
 import { LoginRequest } from '../../models/login-request.model';
+import { UserStore } from '../../store/user.store';
+import { Router } from '@angular/router';
 
 interface LoginForm {
     username: FormControl<string>
@@ -15,8 +16,9 @@ interface LoginForm {
     styleUrl: './login.component.css'
 })
 export class LoginComponent {
+    private readonly router = inject(Router)
     private readonly formBuilder = inject(FormBuilder)
-    private readonly authService = inject(AuthService)
+    readonly userStore = inject(UserStore)
 
     form = this.formBuilder.group<LoginForm>({
         username: this.formBuilder.control('', { nonNullable: true, validators: [Validators.required] }),
@@ -33,8 +35,7 @@ export class LoginComponent {
             password
         }
 
-        this.authService.logIn(request).subscribe({
-            next: response => console.log(response)
-        })
+        this.userStore.logIn(request)
+        this.router.navigateByUrl('/products/products-list')
     }
 }

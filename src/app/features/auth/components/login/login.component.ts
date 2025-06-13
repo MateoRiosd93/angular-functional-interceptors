@@ -36,6 +36,6 @@ export class LoginComponent {
         }
 
         this.userStore.logIn(request)
-        this.router.navigateByUrl('/products/products-list')
+        this.router.navigateByUrl('/products/list')
     }
 }

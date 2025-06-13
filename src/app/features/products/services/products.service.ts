@@ -15,4 +15,7 @@ export class ProductsService {
         return this.httpClient.get<ProductsApiResponse>(`${this.URL_BASE}/products`)
             .pipe(map(adaptProductsResponse))
     }
+
+    // TODO: Realizar obtener detalle del producto
+    
 }

@@ -7,4 +7,5 @@ export class ProductsStore {
     private readonly productsService = inject(ProductsService)
     private readonly state = signal<ProductsState>(initialProductsState)
 
+    // TODO: Realizar los computed signlas y y sus acciones.
 }

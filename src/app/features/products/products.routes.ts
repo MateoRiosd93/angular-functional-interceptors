@@ -7,4 +7,5 @@ export default [
             .then(componentModule => componentModule.ProductListComponent)
         
     }
+    // TODO: Realizar ruta para el detalle del producto
 ] as Routes

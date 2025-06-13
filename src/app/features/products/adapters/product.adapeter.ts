@@ -3,6 +3,7 @@ import { ProductsResponse } from "../models/products-response.model";
 
 export const adaptProductsResponse = (response: ProductsApiResponse): ProductsResponse[] => {
     return response.products.map(product => ({
+        id: product.id,
         title: product.title,
         description: product.description,
         price: product.price,

@@ -1,4 +1,5 @@
 export interface ProductsResponse {
+    id: number
     title: string
     description: string
     category: string

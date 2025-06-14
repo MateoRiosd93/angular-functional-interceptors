@@ -35,7 +35,11 @@ export class LoginComponent {
             password
         }
 
-        this.userStore.logIn(request)
-        this.router.navigateByUrl('/products/list')
+        this.userStore.logIn(request).subscribe({
+            // Se realiza { void y la redireccion ya que navigateByUrl retorna una promera }
+            // y el next espera algo que no retorne nada, void
+            next: () => { void this.router.navigateByUrl('/products/list')},
+            error: console.log
+        })
     }
 }

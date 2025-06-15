@@ -38,8 +38,8 @@ export class LoginComponent {
         this.userStore.logIn(request).subscribe({
             // Se realiza { void y la redireccion ya que navigateByUrl retorna una promera }
             // y el next espera algo que no retorne nada, void
-            next: () => { void this.router.navigateByUrl('/products/list')},
-            error: console.log
+            next: () => { void this.router.navigateByUrl('/products/list') },
+            error: console.error
         })
     }
 }

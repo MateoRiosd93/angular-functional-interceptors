@@ -1,6 +1,9 @@
 import { computed, inject, Injectable, signal } from "@angular/core";
 import { ProductsService } from "../services/products.service";
 import { initialProductsState, ProductsState } from "../models/products-state.model";
+import { Observable, tap } from "rxjs";
+import { ProductsResponse } from "../models/products-response.model";
+import { ProductResponse } from "../models/product-response.model";
 
 @Injectable({ providedIn: 'root' })
 export class ProductsStore {
@@ -14,10 +17,10 @@ export class ProductsStore {
     readonly error = computed(() => this.state().error)
 
     // Acciones para controlar el state
-    getProducts() {
+    getProducts(): Observable<ProductsResponse[]> {
         this.state.update(state => ({ ...state, loading: true }))
 
-        this.productsService.getProducts().subscribe({
+        return this.productsService.getProducts().pipe(tap({
             next: products => this.state.update(state => ({
                 ...state,
                 products,
@@ -32,13 +35,13 @@ export class ProductsStore {
 
                 console.error(error)
             }
-        })
+        }))
     }
 
-    getProductDetails(id: number) {
+    getProductDetails(id: number): Observable<ProductResponse> {
         this.state.update(state => ({ ...state, loading: true }))
 
-        this.productsService.getProductDetail(id).subscribe({
+        return this.productsService.getProductDetail(id).pipe(tap({
             next: product => this.state.update(state => ({
                 ...state,
                 product,
@@ -53,6 +56,6 @@ export class ProductsStore {
 
                 console.error(error)
             }
-        })
+        }))
     }
 }

@@ -1,24 +1,21 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ProductsStore } from '../../store/products.store';
-import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-product-list',
-    imports: [],
+    imports: [RouterLink],
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.css'
 })
 export class ProductListComponent implements OnInit {
     readonly productsStore = inject(ProductsStore)
-    private readonly router = inject(Router)
 
     ngOnInit() {
-        this.productsStore.getProducts()
+        // Para que se active el flujo o escuchar los cambios del store se debe usar 
+        // el .subscribe() en caso contrario no se escucha nada
+        this.productsStore.getProducts().subscribe()
     }
 
-    showProductDetail(id: number){
-        this.productsStore.getProductDetails(id)
-        this.router.navigateByUrl(`/products/${id}`)
-    }
 }
 

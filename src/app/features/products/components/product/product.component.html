@@ -1,11 +1,17 @@
-<section class="w-full flex justify-between">
-    <figure class="bg-white">
-        <img class="w-[420px]" [src]="productsStore.product().images[0]" alt="Product ilustration">
-    </figure>
-    <aside class="w-[400px]">
-        <h1 class="text-2xl font-bold text-balance">{{ productsStore.product().title }}</h1>
-        <span class="text-xl font-mono text-gray-800">{{ productsStore.product().price | currency }}
-        </span>
-        <p class="text-pretty">{{ productsStore.product().description }}</p>
-    </aside>
+<section class="w-full flex flex-col gap-3 mt-4">
+    <a class="flex justify-start items-center gap-1" [routerLink]="['/products/list']">
+        <app-back></app-back>
+        <span class="text-gray-500 text-sm">Back</span>
+    </a>
+    <main class="w-full flex gap-6 bg-white/80 py-6 px-2 rounded-3xl border-gray-200 border">
+        <figure>
+            <img class="w-[820px] h-80 object-contain" [src]="productsStore.product().images[0]" alt="Product ilustration">
+        </figure>
+        <aside class="border-l border-gray-200 pl-6">
+            <h1 class="text-2xl font-bold text-balance">{{ productsStore.product().title }}</h1>
+            <span class="text-xl font-mono text-gray-800">{{ productsStore.product().price | currency }}
+            </span>
+            <p class="text-pretty">{{ productsStore.product().description }}</p>
+        </aside>
+    </main>
 </section>

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angu
 import { LoginRequest } from '../../models/login-request.model';
 import { UserStore } from '../../store/user.store';
 import { Router } from '@angular/router';
+import { setTokenLocalStorage } from '../../../../shared/utils/local-storage';
 
 interface LoginForm {
     username: FormControl<string>
@@ -38,7 +39,10 @@ export class LoginComponent {
         this.userStore.logIn(request).subscribe({
             // Se realiza { void y la redireccion ya que navigateByUrl retorna una promera }
             // y el next espera algo que no retorne nada, void
-            next: () => { void this.router.navigateByUrl('/products/list') },
+            next: ({ accessToken }) => {
+                setTokenLocalStorage(accessToken)
+                this.router.navigateByUrl('/products/list')
+            },
             error: console.error
         })
     }

@@ -1,9 +1,9 @@
-<section class="w-full flex flex-col gap-3 mt-6 mb-2">
+<section class="w-full flex flex-col gap-3 mt-6 mb-4">
     <a class="flex justify-start items-center gap-1" [routerLink]="['/products/list']">
         <app-back></app-back>
         <span class="text-gray-500 text-sm">Back</span>
     </a>
-    <main class="w-full flex gap-6 bg-white/80 py-6 px-2 rounded border-gray-200 border">
+    <main class="w-full flex items-center gap-6 bg-white/80 py-6 px-2 rounded border-gray-200 border">
         <figure class="flex justify-center items-center w-[400px] h-[400px] shrink-0">
             <img class="w-full h-full object-contain" [src]="productsStore.product().images[0]"
                 alt="Product illustration" />

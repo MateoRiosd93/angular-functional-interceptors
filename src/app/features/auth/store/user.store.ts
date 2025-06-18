@@ -19,4 +19,8 @@ export class UserStore {
     logIn(request: LoginRequest): Observable<UserState> {
         return this.authService.logIn(request).pipe(tap(this.state.set))
     }
+
+    clearUserStore(){
+        this.state.set(initialUserState)
+    }
 }

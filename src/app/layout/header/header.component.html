@@ -1,6 +1,14 @@
 <header class="flex justify-between items-center w-full">
     <span class="block text-2xl font-medium">Shop<strong class="font-extrabold text-blue-700">_</strong>ip</span>
+    @if (userStore.userState().accessToken) {
+    <button type="button" [routerLink]="['/home']"
+        (click)="logOut()"
+        class="py-3 px-4 cursor-pointer inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-white text-gray-800 hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none">
+        Log out
+    </button>
+    } @else {
     <a class="block" href="https://github.com/MateoRiosd93" target="_blank" rel="noopener noreferrer">
         <app-git-hub></app-git-hub>
     </a>
+    }
 </header>

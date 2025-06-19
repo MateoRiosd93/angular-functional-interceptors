@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             providers: [HttpClient, HttpHandler],

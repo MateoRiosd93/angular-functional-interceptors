@@ -17,8 +17,5 @@ export class ProductComponent implements OnInit {
     ngOnInit(): void {
         const id = Number(this.route.snapshot.paramMap.get('id'))
         this.productsStore.getProductDetails(id).subscribe()
-        setTimeout(() => {
-            console.log(this.productsStore.product());
-        }, 1000);
     }
 }

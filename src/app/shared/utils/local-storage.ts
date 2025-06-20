@@ -1,7 +1,7 @@
-export const getTokenLocalStorage = () => {
+export function getTokenLocalStorage() {
     return localStorage.getItem('token')
 }
 
-export const setTokenLocalStorage = (accessToken: string) => {
+export function setTokenLocalStorage(accessToken: string) {
     localStorage.setItem('token', accessToken)
 }
